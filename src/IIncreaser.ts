@@ -1,5 +1,5 @@
 export default interface IIncreaser {
-    value: number;
-    next: () => number;
-    skip: (value: number) => number;
+	current: () => number;
+	next: () => number;
+	skip: (value: number) => number;
 }

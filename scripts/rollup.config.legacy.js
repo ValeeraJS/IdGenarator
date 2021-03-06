@@ -14,13 +14,13 @@ export default {
 			format: 'umd',
 			name: 'IdGenerator',
 			file: 'build/IdGenerator.legacy.js',
-			sourceMap: true,
+			sourcemap: true,
 			indent: '\t'
 		},
 		{
 			format: 'es',
 			file: 'build/IdGenerator.legacy.module.js',
-			sourceMap: true,
+			sourcemap: true,
 			indent: '\t'
 		}
 	]

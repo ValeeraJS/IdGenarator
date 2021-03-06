@@ -1,6 +1,6 @@
 {
 	"name": "@valeera/idgenerator",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "A light weight number ID generator written in TS.",
 	"main": "build/IdGenerator.js",
 	"repository": "ValeeraJS/IdGenerator",
@@ -34,8 +34,8 @@
 		"IdGenerator",
 		"utils",
 		"module",
-        "valeera",
-        "tools",
+		"valeera",
+		"tools",
 		"framework"
 	],
 	"author": "hypnosnova",
@@ -77,5 +77,8 @@
 			"build/IdGenerator.legacy.module.js"
 		],
 		"directories": {}
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }

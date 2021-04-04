@@ -53,4 +53,3 @@ var IdGenerator = /** @class */ (function () {
 }());
 
 export default IdGenerator;
-//# sourceMappingURL=IdGenerator.legacy.module.js.map

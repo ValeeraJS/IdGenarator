@@ -11,17 +11,17 @@ export default {
 	],
 	output: [
 		{
-			format: 'umd',
-			name: 'IdGenerator',
 			file: 'build/IdGenerator.js',
-			sourcemap: true,
-			indent: '\t'
+			format: 'umd',
+			indent: '\t',
+			name: 'IdGenerator',
+			sourcemap: true
 		},
 		{
-			format: 'es',
 			file: 'build/IdGenerator.module.js',
-			sourcemap: true,
-			indent: '\t'
+			format: 'es',
+			indent: '\t',
+			sourcemap: false
 		}
 	]
 };

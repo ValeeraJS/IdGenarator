@@ -50,4 +50,3 @@ class IdGenerator {
 }
 
 export default IdGenerator;
-//# sourceMappingURL=IdGenerator.module.js.map

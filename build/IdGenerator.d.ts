@@ -38,4 +38,18 @@ export default class IdGenerator implements IIncreaser {
      * @returns {number} id
      */
     skip(value?: number): number;
+    /**
+     * @method IdGenerator.prototype.skip
+     * @desc 生成新的32位uuid
+     * @public
+     * @returns {string} uuid
+     */
+    uuid(): string;
+    /**
+     * @method IdGenerator.prototype.skip
+     * @desc 生成新的32位BigInt
+     * @public
+     * @returns {BigInt} uuid
+     */
+    uuidBigInt(): BigInt;
 }

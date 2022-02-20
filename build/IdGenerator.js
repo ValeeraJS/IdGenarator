@@ -1,9 +1,12 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
-	(global = global || self, global.IdGenerator = factory());
-}(this, (function () { 'use strict';
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.IdGenerator = factory());
+})(this, (function () { 'use strict';
 
+	const S4 = () => {
+	    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+	};
 	/**
 	 * @class
 	 * @classdesc 数字id生成器，用于生成递增id
@@ -11,6 +14,8 @@
 	 * @implements IdGenerator.IIncreaser
 	 */
 	class IdGenerator {
+	    initValue;
+	    value;
 	    /**
 	     * @member IdGenerator.initValue
 	     * @desc id从该值开始递增，在创建实例时进行设置。设置之后将无法修改。
@@ -53,9 +58,41 @@
 	        this.value += value;
 	        return ++this.value;
 	    }
+	    /**
+	     * @method IdGenerator.prototype.skip
+	     * @desc 生成新的32位uuid
+	     * @public
+	     * @returns {string} uuid
+	     */
+	    uuid() {
+	        if (crypto.randomUUID) {
+	            return crypto.randomUUID();
+	        }
+	        else {
+	            return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+	        }
+	    }
+	    /**
+	     * @method IdGenerator.prototype.skip
+	     * @desc 生成新的32位BigInt
+	     * @public
+	     * @returns {BigInt} uuid
+	     */
+	    uuidBigInt() {
+	        //return bi4(7) + bi4(6) + bi4(5) + bi4(4) + bi4(3) + bi4(2) + bi4(1) + bi4(0);
+	        let arr = crypto.getRandomValues(new Uint16Array(8));
+	        return BigInt(arr[0]) * 65536n * 65536n * 65536n * 65536n * 65536n * 65536n * 65536n
+	            + BigInt(arr[1]) * 65536n * 65536n * 65536n * 65536n * 65536n * 65536n
+	            + BigInt(arr[2]) * 65536n * 65536n * 65536n * 65536n * 65536n
+	            + BigInt(arr[3]) * 65536n * 65536n * 65536n * 65536n
+	            + BigInt(arr[4]) * 65536n * 65536n * 65536n
+	            + BigInt(arr[5]) * 65536n * 65536n
+	            + BigInt(arr[6]) * 65536n
+	            + BigInt(arr[6]);
+	    }
 	}
 
 	return IdGenerator;
 
-})));
+}));
 //# sourceMappingURL=IdGenerator.js.map

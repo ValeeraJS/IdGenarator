@@ -1,6 +1,6 @@
 {
 	"name": "@valeera/idgenerator",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A light weight number ID generator written in TS.",
 	"main": "build/IdGenerator.js",
 	"repository": "ValeeraJS/IdGenerator",
@@ -52,7 +52,7 @@
 		"eslint-plugin-prettier": "^3.3.1",
 		"eslint-plugin-tsdoc": "^0.2.11",
 		"esm": "^3.2.25",
-		"google-closure-compiler": "20210302.0.0",
+		"google-closure-compiler": "20220202.0.0",
 		"http-server": "^0.12.1",
 		"jsdoc": "^3.6.3",
 		"jsdoc-plugin-typescript": "^2.0.5",

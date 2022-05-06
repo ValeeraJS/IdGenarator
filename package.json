@@ -1,6 +1,6 @@
 {
 	"name": "@valeera/idgenerator",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "A light weight number ID generator written in TS.",
 	"main": "build/IdGenerator.js",
 	"repository": "ValeeraJS/IdGenerator",
@@ -62,7 +62,7 @@
 		"rollup": "^2.44.0",
 		"rollup-plugin-json": "^4.0.0",
 		"rollup-plugin-typescript2": "^0.30.0",
-		"typescript": "^4.2.3"
+		"typescript": "^4.6.4"
 	},
 	"jspm": {
 		"files": [

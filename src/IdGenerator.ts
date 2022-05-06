@@ -2,7 +2,7 @@ import IIncreaser from "./IIncreaser";
 
 const S4 = () => {
 	return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-}
+};
 
 /**
  * @class
@@ -33,6 +33,16 @@ export default class IdGenerator implements IIncreaser {
 	 */
 	public current(): number {
 		return this.value;
+	}
+
+	public jumpTo(value: number): boolean {
+		if (this.value < value) {
+			this.value = value;
+
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -71,7 +81,7 @@ export default class IdGenerator implements IIncreaser {
 		if ((crypto as any).randomUUID) {
 			return (crypto as any).randomUUID();
 		} else {
-			return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+			return S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4();
 		}
 	}
 
@@ -82,15 +92,18 @@ export default class IdGenerator implements IIncreaser {
 	 * @returns {BigInt} uuid
 	 */
 	public uuidBigInt(): BigInt {
-		//return bi4(7) + bi4(6) + bi4(5) + bi4(4) + bi4(3) + bi4(2) + bi4(1) + bi4(0);
-		let arr = crypto.getRandomValues(new Uint16Array(8));
-		return BigInt(arr[0]) * 65536n * 65536n * 65536n * 65536n * 65536n * 65536n * 65536n
-			+ BigInt(arr[1]) * 65536n * 65536n * 65536n * 65536n * 65536n * 65536n
-			+ BigInt(arr[2]) * 65536n * 65536n * 65536n * 65536n * 65536n
-			+ BigInt(arr[3]) * 65536n * 65536n * 65536n * 65536n
-			+ BigInt(arr[4]) * 65536n * 65536n * 65536n
-			+ BigInt(arr[5]) * 65536n * 65536n
-			+ BigInt(arr[6]) * 65536n
-			+ BigInt(arr[6]);
+		// return bi4(7) + bi4(6) + bi4(5) + bi4(4) + bi4(3) + bi4(2) + bi4(1) + bi4(0);
+		const arr = crypto.getRandomValues(new Uint16Array(8));
+
+		return (
+			BigInt(arr[0]) * 65536n * 65536n * 65536n * 65536n * 65536n * 65536n * 65536n +
+			BigInt(arr[1]) * 65536n * 65536n * 65536n * 65536n * 65536n * 65536n +
+			BigInt(arr[2]) * 65536n * 65536n * 65536n * 65536n * 65536n +
+			BigInt(arr[3]) * 65536n * 65536n * 65536n * 65536n +
+			BigInt(arr[4]) * 65536n * 65536n * 65536n +
+			BigInt(arr[5]) * 65536n * 65536n +
+			BigInt(arr[6]) * 65536n +
+			BigInt(arr[6])
+		);
 	}
 }

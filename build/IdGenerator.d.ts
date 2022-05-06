@@ -23,6 +23,7 @@ export default class IdGenerator implements IIncreaser {
      * @returns {number} id
      */
     current(): number;
+    jumpTo(value: number): boolean;
     /**
      * @method IdGenerator.prototype.next
      * @desc 生成新的id

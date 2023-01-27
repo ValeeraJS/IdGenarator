@@ -12,7 +12,7 @@ import { IIncreaser } from "./IIncreaser";
  */
 export class IdGenerator implements IIncreaser {
 	public readonly initValue: number;
-	private value: number;
+	#value: number;
 
 	/**
 	 * @member IdGenerator.initValue
@@ -21,7 +21,7 @@ export class IdGenerator implements IIncreaser {
 	 * @public
 	 */
 	public constructor(initValue = 0) {
-		this.value = this.initValue = initValue;
+		this.#value = this.initValue = initValue;
 	}
 
 	/**
@@ -32,12 +32,12 @@ export class IdGenerator implements IIncreaser {
 	 * @returns {number} id
 	 */
 	public current(): number {
-		return this.value;
+		return this.#value;
 	}
 
 	public jumpTo(value: number): boolean {
-		if (this.value < value) {
-			this.value = value;
+		if (this.#value < value) {
+			this.#value = value;
 
 			return true;
 		}
@@ -52,7 +52,7 @@ export class IdGenerator implements IIncreaser {
 	 * @returns {number} id
 	 */
 	public next(): number {
-		return ++this.value;
+		return ++this.#value;
 	}
 
 	/**
@@ -63,9 +63,9 @@ export class IdGenerator implements IIncreaser {
 	 * @returns {number} id
 	 */
 	public skip(value: number = 1): number {
-		this.value += Math.min(1, value);
+		this.#value += Math.min(1, value);
 
-		return ++this.value;
+		return ++this.#value;
 	}
 
 	/**

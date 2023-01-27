@@ -10,7 +10,10 @@
 		"noUnusedLocals": true,
 		"noImplicitAny": true,
 		"target": "esnext",
-		"lib": ["dom"]
+		"lib": [
+			"dom",
+			"esnext"
+		]
 	},
 	"include": [
         "src/**/*"

@@ -1,3 +1,2 @@
-import IdGenerator from "./IdGenerator";
-
-export default IdGenerator;
+export * from "./IIncreaser";
+export * from "./IdGenerator";

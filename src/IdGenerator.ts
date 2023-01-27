@@ -1,8 +1,8 @@
-import IIncreaser from "./IIncreaser";
+import { IIncreaser } from "./IIncreaser";
 
-const S4 = () => {
-	return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-};
+// const S4 = () => {
+// 	return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+// };
 
 /**
  * @class
@@ -10,7 +10,7 @@ const S4 = () => {
  * @param {number} [initValue = 0] 从几开始生成递增id
  * @implements IdGenerator.IIncreaser
  */
-export default class IdGenerator implements IIncreaser {
+export class IdGenerator implements IIncreaser {
 	public readonly initValue: number;
 	private value: number;
 
@@ -62,11 +62,8 @@ export default class IdGenerator implements IIncreaser {
 	 * @param {number} [value = 1] 跳过的范围，必须大于等于1
 	 * @returns {number} id
 	 */
-	public skip(value = 1): number {
-		if (value < 1) {
-			value = 1;
-		}
-		this.value += value;
+	public skip(value: number = 1): number {
+		this.value += Math.min(1, value);
 
 		return ++this.value;
 	}
@@ -78,11 +75,12 @@ export default class IdGenerator implements IIncreaser {
 	 * @returns {string} uuid
 	 */
 	public uuid(): string {
-		if ((crypto as any).randomUUID) {
-			return (crypto as any).randomUUID();
-		} else {
-			return S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4();
-		}
+		// if (crypto.randomUUID) {
+		// 	return (crypto as any).randomUUID();
+		// } else {
+		// 	return S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4();
+		// }
+		return crypto.randomUUID();
 	}
 
 	/**

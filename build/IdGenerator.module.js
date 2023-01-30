@@ -90,4 +90,4 @@ class IdGenerator {
     }
 }
 
-export { IdGenerator };
+export { IdGenerator as default };

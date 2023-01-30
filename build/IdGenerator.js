@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.IdGenerator = {}));
-})(this, (function (exports) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.IdGenerator = factory());
+})(this, (function () { 'use strict';
 
 	// const S4 = () => {
 	// 	return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
@@ -96,6 +96,6 @@
 	    }
 	}
 
-	exports.IdGenerator = IdGenerator;
+	return IdGenerator;
 
 }));

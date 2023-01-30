@@ -1,2 +1,4 @@
+import { IdGenerator } from "./IdGenerator";
 export * from "./IIncreaser";
-export * from "./IdGenerator";
+
+export default IdGenerator;

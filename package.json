@@ -1,6 +1,6 @@
 {
 	"name": "@valeera/idgenerator",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "A light weight number ID generator written in TS.",
 	"main": "build/IdGenerator.js",
 	"repository": "ValeeraJS/IdGenerator",

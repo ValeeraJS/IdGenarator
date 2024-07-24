@@ -1,18 +1,12 @@
-const cache = new WeakMap<IdGenerator, number>();
+let value = 0;
 const decoder = new TextDecoder();
 const arrbuffer = new Uint8Array(32);
 
 export class IdGenerator {
-    constructor() {
-        cache.set(this, 0);
+    static get serialNumber() {
+        return ++value;
     }
-    get serialNumber() {
-        const v = cache.get(this) + 1;
-        cache.set(this, v);
-
-        return v;
-    }
-    get randomString() {
+    static get randomString() {
         return decoder.decode(crypto.getRandomValues(arrbuffer));
     }
 }
